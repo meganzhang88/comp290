@@ -1,1 +1,48 @@
+#!/bin/bash
+# Author: Megan Zhang
+# PID: 730237266
+# I pledge the UNC and COMP290 Honor Code.
+
+# Argument not provided
+file=${1}
+
+if [ -z "${file}" ]
+then
+    # There is no input
+    # Check current status of diddukewin.com
+    curl --silent https://diddukewin.com | grep --quiet NO    
+    if [ "${?}" = 1 ]
+    then
+        # Current loss
+        echo "Yes."
+        exit 1
+    else
+        # Current win
+        echo "No!"
+        exit 1
+    fi
+fi
+
+# Argument is provided
+
+if [ "${file}" = "--help" ]
+then
+    # The input is --help
+    # The script must exit with status code 1
+    # The script must output Usage: did-duke-win [test-url]
+
+    echo "Usage: did-duke-win [test-url]"
+    exit 1
+fi
+
+curl --silent "${file}" | grep --quiet NO
+
+if [ "${?}" = 0 ]
+then
+    # URL to a historical loss
+    echo "No!"
+else
+    # URL to a historical win
+    echo "Yes."
+fi
 
