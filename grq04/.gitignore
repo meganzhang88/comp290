@@ -1,0 +1,4 @@
+# ignore contents in bin/ and **/*.swp
+
+bin/
+**/*.swp
