@@ -1,0 +1,13 @@
+#!/bin/bash
+
+script_path="$(realpath ${0})"
+script_dir="$(dirname ${script_path})"
+export CLASSPATH="${script_dir}/bin"
+
+# Establish the CLASSPATH environment variable
+export CLASSPATH=bin/
+
+# Run the project and pass in any command-line arguments the script file received to the java project
+
+file=${@}
+java comp290.Jrep ${file} 
